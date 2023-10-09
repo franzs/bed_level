@@ -4,7 +4,7 @@ import numpy as np
 import os
 import pickle
 
-import constants
+import bed_level
 
 
 # Function to parse input data from a file and return a NumPy array
@@ -27,8 +27,8 @@ def parse_file(file_path):
 def main():
     parsed_arrays = []
 
-    for file_path in os.listdir(constants.DATA_DIR):
-        parsed_array = parse_file(os.path.join(constants.DATA_DIR, file_path))
+    for file_path in os.listdir(bed_level.DATA_DIR):
+        parsed_array = parse_file(os.path.join(bed_level.DATA_DIR, file_path))
         parsed_arrays.append(parsed_array)
 
     positions = np.array(parsed_arrays).transpose(1, 2, 0)
@@ -57,10 +57,10 @@ def main():
         'std_dev_values': std_dev_values,
     }
 
-    if not os.path.exists(constants.OBJS_DIR):
-        os.mkdir(constants.OBJS_DIR)
+    if not os.path.exists(bed_level.OBJS_DIR):
+        os.mkdir(bed_level.OBJS_DIR)
 
-    with open(os.path.join(constants.OBJS_DIR, 'objects.pickle'), 'wb') as f:
+    with open(os.path.join(bed_level.OBJS_DIR, 'objects.pickle'), 'wb') as f:
         # Pickle the 'data' dictionary using the highest protocol available.
         pickle.dump(objects, f, pickle.HIGHEST_PROTOCOL)
 

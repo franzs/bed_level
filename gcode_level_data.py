@@ -4,9 +4,9 @@ import numpy as np
 import os
 import pickle
 
-import constants
+import bed_level
 
-with open(os.path.join(constants.OBJS_DIR, 'objects.pickle'), 'rb') as f:
+with open(os.path.join(bed_level.OBJS_DIR, 'objects.pickle'), 'rb') as f:
     # Pickle the 'data' dictionary using the highest protocol available.
     objects = pickle.load(f)
 

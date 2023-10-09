@@ -4,12 +4,12 @@ import os
 import serial
 import time
 
-import constants
+import bed_level
 
 OK_STRING = 'ok\n'
 PROCESSING_STRING = 'echo:busy: processing\n'
 
-output_file_template = os.path.join(constants.DATA_DIR, 'level_data_{output_file_index:02d}.txt')
+output_file_template = os.path.join(bed_level.DATA_DIR, 'level_data_{output_file_index:02d}.txt')
 
 
 def send_commands(ser, commands):
@@ -50,15 +50,15 @@ def send_command(ser, command):
 
 
 def main():
-    if not os.path.exists(constants.DATA_DIR):
-        os.mkdir(constants.DATA_DIR)
+    if not os.path.exists(bed_level.DATA_DIR):
+        os.mkdir(bed_level.DATA_DIR)
 
-    ser = serial.Serial(constants.SERIAL_DEVICE, constants.SERIAL_BAUDRATE)
+    ser = serial.Serial(bed_level.SERIAL_DEVICE, bed_level.SERIAL_BAUDRATE)
     time.sleep(2)
 
     firmware_version = send_command(ser, "M115")[0]
 
-    send_commands(ser, constants.START_GCODE)
+    send_commands(ser, bed_level.START_GCODE)
 
     output_file_index = 0
 
@@ -68,8 +68,8 @@ def main():
         else:
             break
 
-    for i in range(0, constants.NUM_RUNS):
-        output_lines = send_commands(ser, constants.BED_LEVEL_GCODE)
+    for i in range(0, bed_level.NUM_RUNS):
+        output_lines = send_commands(ser, bed_level.BED_LEVEL_GCODE)
 
         level_data = []
         is_level_data = False
@@ -85,14 +85,14 @@ def main():
                 level_data.append(output_line)
 
         with open(output_file_template.format(output_file_index=output_file_index), 'w') as file:
-            file.write(f'# Brand: {constants.PRINTER_BRAND}, Model: {constants.PRINTER_MODEL}, UUID: {constants.PRINTER_UUID}\n')
+            file.write(f'# Brand: {bed_level.PRINTER_BRAND}, Model: {bed_level.PRINTER_MODEL}, UUID: {bed_level.PRINTER_UUID}\n')
             file.write(f'# {firmware_version}\n')
             for line in level_data:
                 file.write(line + '\n')
 
             output_file_index += 1
 
-    send_commands(ser, constants.END_GCODE)
+    send_commands(ser, bed_level.END_GCODE)
 
     time.sleep(2)
     ser.close()
