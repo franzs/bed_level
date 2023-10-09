@@ -6,9 +6,6 @@ import time
 
 import bed_level
 
-OK_STRING = 'ok\n'
-PROCESSING_STRING = 'echo:busy: processing\n'
-
 
 def send_commands(ser, commands):
     output_lines = []
@@ -35,13 +32,13 @@ def send_command(ser, command):
 
         # skip temperature reporting
         if not decoded_line.startswith(' T:'):
-            if command.find('#NO_PROC#') == -1 or not decoded_line == PROCESSING_STRING:
+            if command.find('#NO_PROC#') == -1 or not decoded_line == bed_level.PROCESSING_STRING:
                 print('<- ' + decoded_line, end='')
 
-        if not decoded_line == PROCESSING_STRING and not decoded_line.startswith(' T:') and decoded_line != OK_STRING:
+        if not decoded_line == bed_level.PROCESSING_STRING and not decoded_line.startswith(' T:') and decoded_line != bed_level.OK_STRING:
             output_lines.append(decoded_line.rstrip())
 
-        if decoded_line == OK_STRING:
+        if decoded_line == bed_level.OK_STRING:
             break
 
     return output_lines

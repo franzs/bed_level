@@ -32,6 +32,9 @@ G1 Z50   ; move z axis up by 50 mm
 DATA_DIR = 'data'
 OBJS_DIR = 'objs'
 
+OK_STRING = 'ok\n'
+PROCESSING_STRING = 'echo:busy: processing\n'
+
 
 def data_dir():
     return os.path.join(DATA_DIR, PRINTER_BRAND, PRINTER_MODEL, PRINTER_UUID)
