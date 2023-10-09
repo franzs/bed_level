@@ -1,3 +1,6 @@
+PRINTER_BRAND = 'Elegoo'
+PRINTER_MODEL = 'Neptune 3 Pro'
+
 SERIAL_DEVICE = '/dev/ttyUSB0'
 SERIAL_BAUDRATE = 115200
 

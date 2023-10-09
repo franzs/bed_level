@@ -15,8 +15,8 @@ def parse_file(file_path):
         lines = file.readlines()
 
     for idx, line in enumerate(lines):
-        # Skip first two lines
-        if idx >= 2:
+        # Skip first four lines
+        if idx >= 4:
             # Split the line by whitespace and parse numbers (starting with the second element)
             values = [float(val) for val in line.split()[1:]]
             data_list.append(values)
