@@ -1,3 +1,5 @@
+import os
+
 PRINTER_BRAND = 'Elegoo'
 PRINTER_MODEL = 'Neptune 3 Pro'
 PRINTER_UUID = '768345e9-a305-41c2-81e0-efda30a9dfda'  # generate with uuidgen
@@ -29,3 +31,7 @@ G1 Z50   ; move z axis up by 50 mm
 
 DATA_DIR = 'data'
 OBJS_DIR = 'objs'
+
+
+def data_dir():
+    return os.path.join(DATA_DIR, PRINTER_BRAND, PRINTER_MODEL, PRINTER_UUID)

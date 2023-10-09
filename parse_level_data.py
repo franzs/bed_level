@@ -27,8 +27,10 @@ def parse_file(file_path):
 def main():
     parsed_arrays = []
 
-    for file_path in os.listdir(bed_level.DATA_DIR):
-        parsed_array = parse_file(os.path.join(bed_level.DATA_DIR, file_path))
+    data_dir = bed_level.data_dir()
+
+    for file_path in os.listdir(data_dir):
+        parsed_array = parse_file(os.path.join(data_dir, file_path))
         parsed_arrays.append(parsed_array)
 
     positions = np.array(parsed_arrays).transpose(1, 2, 0)

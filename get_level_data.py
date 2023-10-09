@@ -9,8 +9,6 @@ import bed_level
 OK_STRING = 'ok\n'
 PROCESSING_STRING = 'echo:busy: processing\n'
 
-output_file_template = os.path.join(bed_level.DATA_DIR, 'level_data_{output_file_index:02d}.txt')
-
 
 def send_commands(ser, commands):
     output_lines = []
@@ -50,8 +48,11 @@ def send_command(ser, command):
 
 
 def main():
-    if not os.path.exists(bed_level.DATA_DIR):
-        os.mkdir(bed_level.DATA_DIR)
+    data_dir = bed_level.data_dir()
+    output_file_template = os.path.join(data_dir, 'level_data_{output_file_index:02d}.txt')
+
+    if not os.path.exists(data_dir):
+        os.mkdir(data_dir)
 
     ser = serial.Serial(bed_level.SERIAL_DEVICE, bed_level.SERIAL_BAUDRATE)
     time.sleep(2)
