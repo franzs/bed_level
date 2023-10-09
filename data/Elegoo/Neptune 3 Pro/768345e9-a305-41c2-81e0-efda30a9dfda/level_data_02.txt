@@ -1,0 +1,10 @@
+# Brand: Elegoo, Model: Neptune 3 Pro, UUID: 768345e9-a305-41c2-81e0-efda30a9dfda
+# FIRMWARE_NAME:Marlin 2.1.1 (May 20 2023 00:19:16) SOURCE_CODE_URL:github.com/MarlinFirmware/Marlin PROTOCOL_VERSION:1.0 MACHINE_TYPE:3D Printer EXTRUDER_COUNT:1 UUID:cede2a2f-41a2-4748-9b12-c55c62f367ff
+Bilinear Leveling Grid:
+      0      1      2      3      4      5
+ 0 -0.243 -0.180 -0.120 -0.050 +0.012 +0.072
+ 1 -0.203 -0.135 -0.070 -0.008 +0.057 +0.102
+ 2 -0.175 -0.110 -0.055 -0.003 +0.047 +0.080
+ 3 -0.168 -0.108 -0.045 +0.012 +0.072 +0.105
+ 4 -0.138 -0.072 -0.020 +0.040 +0.097 +0.115
+ 5 -0.133 -0.062 -0.005 +0.062 +0.120 +0.155
