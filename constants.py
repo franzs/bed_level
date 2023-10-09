@@ -1,5 +1,6 @@
 PRINTER_BRAND = 'Elegoo'
 PRINTER_MODEL = 'Neptune 3 Pro'
+PRINTER_UUID = '768345e9-a305-41c2-81e0-efda30a9dfda'  # generate with uuidgen
 
 SERIAL_DEVICE = '/dev/ttyUSB0'
 SERIAL_BAUDRATE = 115200

@@ -85,7 +85,7 @@ def main():
                 level_data.append(output_line)
 
         with open(output_file_template.format(output_file_index=output_file_index), 'w') as file:
-            file.write(f'# Brand: {constants.PRINTER_BRAND}, Model: {constants.PRINTER_MODEL}\n')
+            file.write(f'# Brand: {constants.PRINTER_BRAND}, Model: {constants.PRINTER_MODEL}, UUID: {constants.PRINTER_UUID}\n')
             file.write(f'# {firmware_version}\n')
             for line in level_data:
                 file.write(line + '\n')
