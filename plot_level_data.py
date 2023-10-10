@@ -7,6 +7,8 @@ import plotly.graph_objects as go
 
 import bed_level
 
+from plotly.subplots import make_subplots
+
 with open(os.path.join(bed_level.OBJS_DIR, 'objects.pickle'), 'rb') as f:
     # Pickle the 'data' dictionary using the highest protocol available.
     objects = pickle.load(f)
@@ -28,9 +30,15 @@ max_surface = go.Surface(x=x, y=y, z=max_values, name='Maximum')
 mean_surface = go.Surface(x=x, y=y, z=mean_values, name='Mean')
 std_dev_surface = go.Surface(x=x, y=y, z=std_dev_values, name='Standard Deviation')
 
+fig = make_subplots(
+    rows=1, cols=2,
+    specs=[[{'type': 'surface'}, {'type': 'surface'}]])
+
 # Create the figure and add surfaces to it
-#fig = go.Figure(data=[min_surface, max_surface, mean_surface])
-fig = go.Figure(data=[std_dev_surface])
+fig.add_trace(mean_surface, row=1, col=1)
+fig.add_trace(min_surface, row=1, col=1)
+fig.add_trace(max_surface, row=1, col=1)
+fig.add_trace(std_dev_surface, row=1, col=2)
 
 # Set plot layout and labels
 fig.update_layout(
@@ -39,7 +47,7 @@ fig.update_layout(
         yaxis_title='Row',
         zaxis_title='Value',
     ),
-    title='3D Surface Plot with Mean and Standard Deviation',
+    title='3D Surface Plots',
 )
 
 # Show the plot
