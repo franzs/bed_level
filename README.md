@@ -59,3 +59,13 @@ Generate GCODE for setting the bed level grid:
 ```
 
 By default, it calculates the mean values of the collected bed level data.
+
+## Example plot
+
+### Mean with minimum and maximum
+
+![Mean with minimum and maximum](./images/mean_min_max.png)
+
+### Standard deviation
+
+![Standard deviation](./images/std_dev.png)
