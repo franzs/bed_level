@@ -43,9 +43,9 @@ fig.add_trace(std_dev_surface, row=1, col=2)
 # Set plot layout and labels
 fig.update_layout(
     scene=dict(
-        xaxis_title='Position',
-        yaxis_title='Row',
-        zaxis_title='Value',
+        xaxis_title='X axis',
+        yaxis_title='Y axis',
+        zaxis_title='Z axis',
     ),
     title='3D Surface Plots',
 )
