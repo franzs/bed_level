@@ -50,5 +50,11 @@ fig.update_layout(
     title='3D Surface Plots',
 )
 
+# Update z axis ranges for each subplot
+fig.update_scenes(dict(zaxis=dict(range=bed_level.ZAXIS_RANGE1)),  # Custom z-axis range for the first subplot
+                  row=1, col=1)
+fig.update_scenes(dict(zaxis=dict(range=bed_level.ZAXIS_RANGE2)),  # Custom z-axis range for the second subplot
+                  row=1, col=2)
+
 # Show the plot
 fig.show()

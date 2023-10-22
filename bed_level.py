@@ -9,6 +9,9 @@ SERIAL_BAUDRATE = 115200
 
 NUM_RUNS = 3
 
+ZAXIS_RANGE1 = [-0.2, 0.2]  # Used for mean, min, max subplot
+ZAXIS_RANGE2 = [0, 0.03]  # Used for standard deviatioin subplot
+
 START_GCODE = """
 M140 S60  ; starting by heating the bed for nominal mesh accuracy
 M104 S140 ; set hotend temperature
