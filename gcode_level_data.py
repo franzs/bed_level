@@ -12,5 +12,7 @@ with open(os.path.join(bed_level.OBJS_DIR, 'objects.pickle'), 'rb') as f:
 
 mean_values = objects['mean_values']
 
+print("G28 ; Auto Home")
+
 for iy, ix in np.ndindex(mean_values.shape):
     print(f"G29 W I{ix} J{iy} Z{mean_values[iy, ix]:.05f}")
